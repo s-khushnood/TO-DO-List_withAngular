@@ -1,0 +1,13 @@
+<app-addtodo (todoAdd)="todoAdd($event)"></app-addtodo>
+<h3 class="container text-center">My To DO List</h3>
+<div class="d-flex justify-content-center">
+    <p class="text-center bg-warning w-25 p-3 rounded"> Remaining Tasks: {{remcounter}}</p>
+    <p class="text-center bg-success w-25 p-3 rounded"> Completed Tasks: {{donecounter}}</p>
+</div>
+
+<div *ngIf="this.todos.length===0; else elseBlock" class="text-center">No ToDos To Show</div>
+<ng-template #elseBlock>
+<div *ngFor="let todo of todos; index as i">
+    <app-todo-item [todo]="todo" [i]="i"  (todoDelete)="todoDelete($event)" (todoCheckBox)="todoCheckbox($event)" ></app-todo-item>
+</div>
+</ng-template>

@@ -1,0 +1,20 @@
+<div class="container my-3 text-center d-flex flex-column justify-content-center align-items-center">
+  <div *ngIf="this.btndisplay===true;else elseblock" >  <button class="btn btn-info" (click)="formdisplay()">Add To do</button>
+  </div>
+  <ng-template #elseblock></ng-template>
+
+  <div *ngIf="this.display===false; else elseBlock">Click Button to Add New Task</div>
+  <ng-template #elseBlock>
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm" class="shadow p-3 mb-5 bg-white rounded w-50">
+    <h3>Add New Task</h3>
+    <div class="mb-3">
+      <label for="title" class="form-label">Todo Title</label>
+      <input type="text" [(ngModel)]="title" class="form-control" name="title" placeholder="Enter Task Title" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea type="text" class="form-control"  [(ngModel)]="desc" name="description" placeholder="Enter Task Description" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">submit</button>
+  </form></ng-template>
+</div>

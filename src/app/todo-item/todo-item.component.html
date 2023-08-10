@@ -1,0 +1,10 @@
+<div class="my-3 container shadow p-3 mb-5 rounded"  [class]="{'strike':!todo.active}">
+    <h4 >{{todo.title}}</h4>
+    <p >{{todo.desc}}</p>
+    <div class="form-group form-check" >
+        <input type="checkbox" class="form-check-input" id="btncheck1{{i}}" (click)="onCheckbox(todo)" [checked]="!this.todo.active" >
+        <label class="form-check-label" for="btncheck1{{i}}">Mark as Done</label>
+      </div>
+    <button class="btn btn-danger" (click)="onClick(todo)">Delete</button>
+</div>
+
