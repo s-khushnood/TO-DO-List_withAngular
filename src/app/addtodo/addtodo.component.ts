@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output,OnChanges } from '@angular/core';
+import { Component, EventEmitter, Output,DoCheck} from '@angular/core';
 import { Todo } from '../Todo';
 
 @Component({
@@ -6,7 +6,7 @@ import { Todo } from '../Todo';
   templateUrl: './addtodo.component.html',
   styleUrls: ['./addtodo.component.css']
 })
-export class AddtodoComponent implements OnChanges{
+export class AddtodoComponent implements DoCheck{
 title:string
 desc:string
 display:boolean=false;
@@ -15,8 +15,8 @@ btndisplay:boolean=true;
 constructor(){
 
 }
-ngOnChanges(): void {
-  console.log('changing running')
+ngDoCheck(): void {
+  console.log('checked,,addtodo')
 }
 formdisplay(){
 this.display=true;

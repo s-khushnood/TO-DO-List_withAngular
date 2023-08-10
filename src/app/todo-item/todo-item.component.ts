@@ -1,11 +1,11 @@
-import { Component,  Input, Output ,EventEmitter} from '@angular/core';
+import { Component,  Input, Output ,EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
 import {Todo} from 'src/app/Todo';
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
   styleUrls: ['./todo-item.component.css']
 })
-export class TodoItemComponent {
+export class TodoItemComponent implements OnChanges {
 @Input() todo:Todo;
 @Input() i:number;
 @Output() todoDelete: EventEmitter<Todo> =new EventEmitter();
@@ -15,5 +15,8 @@ this.todoDelete.emit(todo);
 }
 onCheckbox(todo:Todo){
 this.todoCheckBox.emit(todo);
+}
+ngOnChanges(changes: SimpleChanges): void {
+  console.log(changes);
 }
 }

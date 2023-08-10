@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { Todo } from '../Todo';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
-export class TodoComponent implements OnInit{
+export class TodoComponent implements OnInit, OnDestroy{
   localItem: string;
   todos: Todo[];
   i: number;
@@ -30,9 +30,11 @@ export class TodoComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    console.log('on in it running');
+    console.log('on in it running:todo');
   }
-  
+  ngOnDestroy(): void {
+    console.log('todo destroyed');
+  }
   todoDelete(todo: Todo) {
     const index = this.todos.indexOf(todo);
     if (!this.todos[index].active) {
